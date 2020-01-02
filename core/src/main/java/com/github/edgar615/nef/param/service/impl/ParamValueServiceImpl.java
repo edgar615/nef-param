@@ -23,6 +23,7 @@ import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,6 +66,11 @@ public class ParamValueServiceImpl implements ParamValueService {
       throw SystemException.create(ParamError.GROUP_NOT_FOUND)
           .setDetails(saveParamValueModel.getParamGroup());
     }
+    ParamGroup paramGroup = paramGroupDao.findById(groupId);
+    if (paramGroup == null) {
+      throw SystemException.create(ParamError.GROUP_NOT_FOUND)
+          .setDetails(saveParamValueModel.getParamGroup());
+    }
     List<ViewParamDefModel> paramDefList = paramDefReuseService.list(groupId);
     Multimap<String, Rule> rules = transformToRules(paramDefList);
     Validations.validate(saveParamValueModel.getParamValues(), rules);
@@ -74,8 +80,11 @@ public class ParamValueServiceImpl implements ParamValueService {
     }
     for (ViewParamDefModel viewParamDefModel : paramDefList) {
       ParamValue paramValue = new ParamValue();
-//      paramValue.set
-      paramValueDao.deleteByDef(viewParamDefModel.getParamDefId());
+      paramValue.setParamValue(saveParamValueModel.getParamValues().get(viewParamDefModel.getName()).toString());
+      paramValue.setParamDefId(viewParamDefModel.getParamDefId());
+      // todo 应用、用户、群组
+      paramValue.setCreateTime(Instant.now().getEpochSecond());
+      paramValueDao.insert(paramValue);
     }
 
 
