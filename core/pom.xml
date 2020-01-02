@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>nef-param</artifactId>
+    <groupId>com.github.edgar615</groupId>
+    <version>0.0.1</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>nef-param-core</artifactId>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>nef-commons</artifactId>
+      <version>${nef.commons.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>util</artifactId>
+      <version>${util.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>permanent-cache</artifactId>
+      <version>${cache.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>jdbc-spring-support</artifactId>
+      <version>${jdbc.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>caffeine-cache-spring-support</artifactId>
+      <version>${cache.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>redis-cache-spring-support</artifactId>
+      <version>${cache.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>spring-toolbox-auth</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>spring-toolbox-jwt</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>spring-toolbox-appkey</artifactId>
+    </dependency>
+
+    <!--日志-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+
+    <!--持久层生成，只在开发时使用-->
+    <dependency>
+      <groupId>com.github.edgar615</groupId>
+      <artifactId>jdbc-codegen</artifactId>
+      <version>${jdbc.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!--文档生成，测试环境-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!--API测试-->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito2</artifactId>
+      <version>2.0.2</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+</project>
