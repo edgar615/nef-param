@@ -49,6 +49,22 @@ public class ParamValueServiceImpl implements ParamValueService {
   @Autowired
   private ParamDefReuseService paramDefReuseService;
 
+  private boolean checkApplication(int type) {
+    return type == ParamConsts.PARAM_GROUP_TYPE_APPLICATION
+        || type == ParamConsts.PARAM_GROUP_TYPE_APPLICATION_GROUP
+        || type == ParamConsts.PARAM_GROUP_TYPE_APPLICATION_USER;
+  }
+
+  private boolean checkUser(int type) {
+    return type == ParamConsts.PARAM_GROUP_TYPE_APPLICATION_USER
+        || type == ParamConsts.PARAM_GROUP_TYPE_PLATFORM_USER;
+  }
+
+  private boolean checkGroup(int type) {
+    return type == ParamConsts.PARAM_GROUP_TYPE_APPLICATION_GROUP
+        || type == ParamConsts.PARAM_GROUP_TYPE_PLATFORM_GROUP;
+  }
+
   @Override
   @Transactional
   public void insert(SaveParamValueModel saveParamValueModel) {
@@ -61,17 +77,29 @@ public class ParamValueServiceImpl implements ParamValueService {
       throw SystemException.create(DefaultErrorCode.MISSING_ARGS)
           .setDetails("singleParamValues");
     }
-    Long groupId = paramGroupDao.findByName(saveParamValueModel.getParamGroup());
-    if (groupId == null) {
+    Long paramGroupId = paramGroupDao.findByName(saveParamValueModel.getParamGroup());
+    if (paramGroupId == null) {
       throw SystemException.create(ParamError.GROUP_NOT_FOUND)
           .setDetails(saveParamValueModel.getParamGroup());
     }
-    ParamGroup paramGroup = paramGroupDao.findById(groupId);
+    ParamGroup paramGroup = paramGroupDao.findById(paramGroupId);
     if (paramGroup == null) {
       throw SystemException.create(ParamError.GROUP_NOT_FOUND)
           .setDetails(saveParamValueModel.getParamGroup());
     }
-    List<ViewParamDefModel> paramDefList = paramDefReuseService.list(groupId);
+    if (checkApplication(paramGroup.getType()) && saveParamValueModel.getApplicationId() == null) {
+      throw SystemException.create(DefaultErrorCode.MISSING_ARGS)
+          .setDetails("applicationId");
+    }
+    if (checkUser(paramGroup.getType()) && saveParamValueModel.getUserId() == null) {
+      throw SystemException.create(DefaultErrorCode.MISSING_ARGS)
+          .setDetails("userId");
+    }
+    if (checkGroup(paramGroup.getType()) && saveParamValueModel.getUserId() == null) {
+      throw SystemException.create(DefaultErrorCode.MISSING_ARGS)
+          .setDetails("groupId");
+    }
+    List<ViewParamDefModel> paramDefList = paramDefReuseService.list(paramGroupId);
     Multimap<String, Rule> rules = transformToRules(paramDefList);
     Validations.validate(saveParamValueModel.getParamValues(), rules);
     // 先删除，再添加
@@ -82,7 +110,16 @@ public class ParamValueServiceImpl implements ParamValueService {
       ParamValue paramValue = new ParamValue();
       paramValue.setParamValue(saveParamValueModel.getParamValues().get(viewParamDefModel.getName()).toString());
       paramValue.setParamDefId(viewParamDefModel.getParamDefId());
-      // todo 应用、用户、群组
+      if (checkApplication(paramGroup.getType())) {
+        paramValue.setApplicationId(saveParamValueModel.getApplicationId());
+      }
+      if (checkUser(paramGroup.getType())) {
+        paramValue.setSubjectId(saveParamValueModel.getUserId());
+      }
+      if (checkGroup(paramGroup.getType())) {
+        paramValue.setSubjectId(saveParamValueModel.getGroupId());
+      }
+
       paramValue.setCreateTime(Instant.now().getEpochSecond());
       paramValueDao.insert(paramValue);
     }
