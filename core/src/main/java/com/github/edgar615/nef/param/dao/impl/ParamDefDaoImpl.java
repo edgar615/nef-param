@@ -4,6 +4,7 @@ import com.github.edgar615.dao.BaseDaoImpl;
 import com.github.edgar615.jdbc.Jdbc;
 import com.github.edgar615.nef.param.dao.ParamDefDao;
 import com.github.edgar615.nef.param.entity.ParamDef;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,5 +23,12 @@ public class ParamDefDaoImpl extends BaseDaoImpl<Long, ParamDef> implements Para
     
 
     /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+    @Override
+    public List<ParamDef> findByGroup(long paramGroupId) {
+        return null;
+    }
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

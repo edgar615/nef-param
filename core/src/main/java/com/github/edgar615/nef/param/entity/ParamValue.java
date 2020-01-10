@@ -20,12 +20,24 @@ public class ParamValue implements Persistent<Long> {
     * remarks: 参数值id
     * default: 
     * isNullable: false
-    * isAutoInc: false
+    * isAutoInc: true
     * isPrimary: true
     * type: -5
     * size: 19
     */
     private Long paramValueId;
+    
+    /**
+    * Column : param_group_id
+    * remarks: 
+    * default: 
+    * isNullable: true
+    * isAutoInc: false
+    * isPrimary: false
+    * type: -5
+    * size: 19
+    */
+    private Long paramGroupId;
     
     /**
     * Column : param_def_id
@@ -107,6 +119,14 @@ public class ParamValue implements Persistent<Long> {
         this.paramValueId = paramValueId;
     }
     
+    public Long getParamGroupId() {
+        return paramGroupId;
+    }
+
+    public void setParamGroupId(Long paramGroupId) {
+        this.paramGroupId = paramGroupId;
+    }
+    
     public Long getParamDefId() {
         return paramDefId;
     }
@@ -159,6 +179,7 @@ public class ParamValue implements Persistent<Long> {
     public String toString() {
         return MoreObjects.toStringHelper("ParamValue")
             .add("paramValueId",  paramValueId)
+            .add("paramGroupId",  paramGroupId)
             .add("paramDefId",  paramDefId)
             .add("paramValue",  paramValue)
             .add("applicationId",  applicationId)
@@ -187,4 +208,6 @@ public class ParamValue implements Persistent<Long> {
 
    /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

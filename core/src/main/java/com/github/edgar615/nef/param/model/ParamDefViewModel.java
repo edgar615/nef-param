@@ -4,7 +4,7 @@ import com.github.edgar615.nef.param.entity.ParamDef;
 import com.github.edgar615.nef.param.entity.ParamOption;
 import java.util.List;
 
-public class ViewParamDefModel extends ParamDef {
+public class ParamDefViewModel extends ParamDef {
 
   private List<ParamOption> options;
 

@@ -22,5 +22,12 @@ public class ParamGroupDaoImpl extends BaseDaoImpl<Long, ParamGroup> implements 
     
 
     /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+    @Override
+    public Long findByName(String paramGroup) {
+        return null;
+    }
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

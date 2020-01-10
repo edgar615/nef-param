@@ -1,12 +1,12 @@
-package com.github.edgar615.nef.param.reuse.impl;
+package com.github.edgar615.nef.param.manager.impl;
 
 import com.github.edgar615.nef.commons.constant.ParamConsts;
 import com.github.edgar615.nef.param.dao.ParamDefDao;
 import com.github.edgar615.nef.param.dao.ParamOptionDao;
 import com.github.edgar615.nef.param.entity.ParamDef;
 import com.github.edgar615.nef.param.entity.ParamOption;
-import com.github.edgar615.nef.param.model.ViewParamDefModel;
-import com.github.edgar615.nef.param.reuse.ParamDefReuseService;
+import com.github.edgar615.nef.param.model.ParamDefViewModel;
+import com.github.edgar615.nef.param.manager.ParamDefManager;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.BeanUtils;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ParamDefReuseServiceImpl implements ParamDefReuseService {
+public class ParamDefManagerImpl implements ParamDefManager {
 
   @Autowired
   private ParamDefDao paramDefDao;
@@ -23,19 +23,19 @@ public class ParamDefReuseServiceImpl implements ParamDefReuseService {
   private ParamOptionDao paramOptionDao;
 
   @Override
-  public List<ViewParamDefModel> list(long paramGroupId) {
+  public List<ParamDefViewModel> findByGroup(long paramGroupId) {
     List<ParamDef> paramDefList = paramDefDao.findByGroup(paramGroupId);
-    List<ViewParamDefModel> viewParamDefModelList = new ArrayList<>();
+    List<ParamDefViewModel> paramDefViewModelList = new ArrayList<>();
     for (ParamDef paramDef : paramDefList) {
-      ViewParamDefModel viewParamDefModel = new ViewParamDefModel();
-      viewParamDefModelList.add(viewParamDefModel);
-      BeanUtils.copyProperties(paramDef, viewParamDefModel);
-      if (viewParamDefModel.getType().equals(ParamConsts.PARAM_TYPE_OPTION_SINGLE)
-          || viewParamDefModel.getType().equals(ParamConsts.PARAM_TYPE_OPTION_MULTI)) {
+      ParamDefViewModel paramDefViewModel = new ParamDefViewModel();
+      paramDefViewModelList.add(paramDefViewModel);
+      BeanUtils.copyProperties(paramDef, paramDefViewModel);
+      if (paramDefViewModel.getType().equals(ParamConsts.PARAM_TYPE_OPTION_SINGLE)
+          || paramDefViewModel.getType().equals(ParamConsts.PARAM_TYPE_OPTION_MULTI)) {
         List<ParamOption> paramOptions = paramOptionDao.findByDef(paramDef.getParamDefId());
-        viewParamDefModel.setOptions(paramOptions);
+        paramDefViewModel.setOptions(paramOptions);
       }
     }
-    return viewParamDefModelList;
+    return paramDefViewModelList;
   }
 }

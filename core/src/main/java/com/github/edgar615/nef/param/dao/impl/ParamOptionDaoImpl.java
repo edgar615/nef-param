@@ -4,6 +4,7 @@ import com.github.edgar615.dao.BaseDaoImpl;
 import com.github.edgar615.jdbc.Jdbc;
 import com.github.edgar615.nef.param.dao.ParamOptionDao;
 import com.github.edgar615.nef.param.entity.ParamOption;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,5 +23,17 @@ public class ParamOptionDaoImpl extends BaseDaoImpl<Long, ParamOption> implement
     
 
     /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+    @Override
+    public void deleteByDef(long defId) {
+
+    }
+
+    @Override
+    public List<ParamOption> findByDef(long defId) {
+        return null;
+    }
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

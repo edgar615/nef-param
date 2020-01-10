@@ -13,8 +13,9 @@ import java.util.List;
 */
 public interface ParamDefDao extends BaseDao<Long, ParamDef> {
 
-
-  /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+   /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
   List<ParamDef> findByGroup(long paramGroupId);
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

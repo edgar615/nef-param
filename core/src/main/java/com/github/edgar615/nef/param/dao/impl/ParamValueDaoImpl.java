@@ -22,5 +22,12 @@ public class ParamValueDaoImpl extends BaseDaoImpl<Long, ParamValue> implements 
     
 
     /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+    @Override
+    public void deleteByDef(long defId) {
+
+    }
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

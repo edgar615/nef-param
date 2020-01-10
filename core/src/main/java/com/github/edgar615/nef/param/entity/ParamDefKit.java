@@ -38,8 +38,6 @@ public class ParamDefKit implements PersistentKit<Long, ParamDef> {
     
     public static final String DB_MAX_VALUE = "max_value";
     
-    public static final String DB_REQUIRED = "required";
-    
     public static final String DB_POSSIBLE_VALUES = "possible_values";
     
     public static final String DB_DEFAULT_VALUE = "default_value";
@@ -67,8 +65,6 @@ public class ParamDefKit implements PersistentKit<Long, ParamDef> {
     
     public static final String MAX_VALUE = "maxValue";
     
-    public static final String REQUIRED = "required";
-    
     public static final String POSSIBLE_VALUES = "possibleValues";
     
     public static final String DEFAULT_VALUE = "defaultValue";
@@ -86,7 +82,6 @@ public class ParamDefKit implements PersistentKit<Long, ParamDef> {
 						PRECISION_VALUE,
 						MIN_VALUE,
 						MAX_VALUE,
-						REQUIRED,
 						POSSIBLE_VALUES,
 						DEFAULT_VALUE);
     }
@@ -114,7 +109,6 @@ public class ParamDefKit implements PersistentKit<Long, ParamDef> {
         map.put(PRECISION_VALUE,  paramDef.getPrecisionValue());
         map.put(MIN_VALUE,  paramDef.getMinValue());
         map.put(MAX_VALUE,  paramDef.getMaxValue());
-        map.put(REQUIRED,  paramDef.getRequired());
         map.put(POSSIBLE_VALUES,  paramDef.getPossibleValues());
         map.put(DEFAULT_VALUE,  paramDef.getDefaultValue());
     }
@@ -157,9 +151,6 @@ public class ParamDefKit implements PersistentKit<Long, ParamDef> {
         if (map.get(MAX_VALUE) instanceof Long) {
             paramDef.setMaxValue((Long) map.get(MAX_VALUE));
         }
-        if (map.get(REQUIRED) instanceof Boolean) {
-            paramDef.setRequired((Boolean) map.get(REQUIRED));
-        }
         if (map.get(POSSIBLE_VALUES) instanceof String) {
             paramDef.setPossibleValues((String) map.get(POSSIBLE_VALUES));
         }
@@ -171,4 +162,6 @@ public class ParamDefKit implements PersistentKit<Long, ParamDef> {
 
    /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

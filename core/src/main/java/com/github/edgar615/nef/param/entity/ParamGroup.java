@@ -20,7 +20,7 @@ public class ParamGroup implements Persistent<Long> {
     * remarks: 参数分组id
     * default: 
     * isNullable: false
-    * isAutoInc: false
+    * isAutoInc: true
     * isPrimary: true
     * type: -5
     * size: 19
@@ -187,4 +187,6 @@ public class ParamGroup implements Persistent<Long> {
 
    /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

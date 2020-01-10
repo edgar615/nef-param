@@ -1,9 +1,13 @@
 package com.github.edgar615.nef.param.model;
 
-import java.util.Map;
+/**
+ * 查找参数值
+ */
+public class ParamValueGetModel {
 
-public class SaveParamValueModel {
-
+  /**
+   * 参数组名称
+   */
   private String paramGroup;
 
   /**
@@ -20,8 +24,6 @@ public class SaveParamValueModel {
    * 群组ID，群组类的参数必填项
    */
   private Long groupId;
-
-  private Map<String, Object> paramValues;
 
   public String getParamGroup() {
     return paramGroup;
@@ -55,11 +57,4 @@ public class SaveParamValueModel {
     this.groupId = groupId;
   }
 
-  public Map<String, Object> getParamValues() {
-    return paramValues;
-  }
-
-  public void setParamValues(Map<String, Object> paramValues) {
-    this.paramValues = paramValues;
-  }
 }

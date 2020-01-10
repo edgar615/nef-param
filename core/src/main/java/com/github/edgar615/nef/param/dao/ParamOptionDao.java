@@ -13,7 +13,7 @@ import java.util.List;
 */
 public interface ParamOptionDao extends BaseDao<Long, ParamOption> {
 
-  /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+   /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 
   /**
    * 根据def删除option
@@ -28,4 +28,6 @@ public interface ParamOptionDao extends BaseDao<Long, ParamOption> {
    */
   List<ParamOption> findByDef(long defId);
   /* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

@@ -12,11 +12,13 @@ import com.github.edgar615.nef.param.entity.ParamValue;
 */
 public interface ParamValueDao extends BaseDao<Long, ParamValue> {
 
-  /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+   /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
   /**
    * 根据def删除option
    * @param defId
    */
   void deleteByDef(long defId);
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

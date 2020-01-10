@@ -20,7 +20,7 @@ public class ParamDef implements Persistent<Long> {
     * remarks: 属性id
     * default: 
     * isNullable: false
-    * isAutoInc: false
+    * isAutoInc: true
     * isPrimary: true
     * type: -5
     * size: 19
@@ -148,18 +148,6 @@ public class ParamDef implements Persistent<Long> {
     private Long maxValue;
     
     /**
-    * Column : required
-    * remarks: 必须值
-    * default: 
-    * isNullable: true
-    * isAutoInc: false
-    * isPrimary: false
-    * type: -7
-    * size: 1
-    */
-    private Boolean required;
-    
-    /**
     * Column : possible_values
     * remarks: 可能的值
     * default: 
@@ -271,14 +259,6 @@ public class ParamDef implements Persistent<Long> {
         this.maxValue = maxValue;
     }
     
-    public Boolean getRequired() {
-        return required;
-    }
-
-    public void setRequired(Boolean required) {
-        this.required = required;
-    }
-    
     public String getPossibleValues() {
         return possibleValues;
     }
@@ -309,7 +289,6 @@ public class ParamDef implements Persistent<Long> {
             .add("precisionValue",  precisionValue)
             .add("minValue",  minValue)
             .add("maxValue",  maxValue)
-            .add("required",  required)
             .add("possibleValues",  possibleValues)
             .add("defaultValue",  defaultValue)
            .toString();
@@ -334,4 +313,6 @@ public class ParamDef implements Persistent<Long> {
 
    /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

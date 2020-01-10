@@ -18,6 +18,8 @@ public class ParamValueKit implements PersistentKit<Long, ParamValue> {
     
     public static final String DB_PARAM_VALUE_ID = "param_value_id";
     
+    public static final String DB_PARAM_GROUP_ID = "param_group_id";
+    
     public static final String DB_PARAM_DEF_ID = "param_def_id";
     
     public static final String DB_PARAM_VALUE = "param_value";
@@ -32,6 +34,8 @@ public class ParamValueKit implements PersistentKit<Long, ParamValue> {
     
     
     public static final String PARAM_VALUE_ID = "paramValueId";
+    
+    public static final String PARAM_GROUP_ID = "paramGroupId";
     
     public static final String PARAM_DEF_ID = "paramDefId";
     
@@ -48,6 +52,7 @@ public class ParamValueKit implements PersistentKit<Long, ParamValue> {
     @Override
     public List<String> fields() {
       return Lists.newArrayList(PARAM_VALUE_ID,
+						PARAM_GROUP_ID,
 						PARAM_DEF_ID,
 						PARAM_VALUE,
 						APPLICATION_ID,
@@ -69,6 +74,7 @@ public class ParamValueKit implements PersistentKit<Long, ParamValue> {
         }
         
         map.put(PARAM_VALUE_ID,  paramValue.getParamValueId());
+        map.put(PARAM_GROUP_ID,  paramValue.getParamGroupId());
         map.put(PARAM_DEF_ID,  paramValue.getParamDefId());
         map.put(PARAM_VALUE,  paramValue.getParamValue());
         map.put(APPLICATION_ID,  paramValue.getApplicationId());
@@ -84,6 +90,9 @@ public class ParamValueKit implements PersistentKit<Long, ParamValue> {
         }
         if (map.get(PARAM_VALUE_ID) instanceof Long) {
             paramValue.setParamValueId((Long) map.get(PARAM_VALUE_ID));
+        }
+        if (map.get(PARAM_GROUP_ID) instanceof Long) {
+            paramValue.setParamGroupId((Long) map.get(PARAM_GROUP_ID));
         }
         if (map.get(PARAM_DEF_ID) instanceof Long) {
             paramValue.setParamDefId((Long) map.get(PARAM_DEF_ID));
@@ -108,4 +117,6 @@ public class ParamValueKit implements PersistentKit<Long, ParamValue> {
 
    /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }

@@ -12,7 +12,9 @@ import com.github.edgar615.nef.param.entity.ParamGroup;
 */
 public interface ParamGroupDao extends BaseDao<Long, ParamGroup> {
 
-  /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+   /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
   Long findByName(String paramGroup);
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+
 }
